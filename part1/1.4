@@ -1,0 +1,46 @@
+Pull / run
+-----------
+peekoo@acies:~$ docker run --detach --name bash-exec devopsdockeruh/exec_bash_exercise
+Unable to find image 'devopsdockeruh/exec_bash_exercise:latest' locally
+latest: Pulling from devopsdockeruh/exec_bash_exercise
+741437d97401: Pull complete
+34d8874714d7: Pull complete
+0a108aa26679: Pull complete
+7f0334c36886: Pull complete
+65c95cb8b3be: Pull complete
+a36b708560f8: Pull complete
+4090f912e6c7: Pull complete
+ce5fe2607c2e: Pull complete
+9400f5f657d6: Pull complete
+c4919883f7fa: Pull complete
+Digest: sha256:c463832132d1fb0b8b3b60348a6fc36fda7512a4ef2d1050e8bea7b6a6d7a2f3
+Status: Downloaded newer image for devopsdockeruh/exec_bash_exercise:latest
+417d5e90184a8f79c3cce18b4d6c81f225d93fd1ec9be0ecce0daddadb1762c3
+
+
+Bash inside container
+---------------------
+peekoo@acies:~$ docker exec -it bash-exec bash
+root@417d5e90184a:/usr/app#
+
+Secret message
+--------------
+root@417d5e90184a:/usr/app# tail -f ./logs.txt
+Sat, 06 Jul 2019 09:32:13 GMT
+Sat, 06 Jul 2019 09:32:16 GMT
+Sat, 06 Jul 2019 09:32:19 GMT
+Sat, 06 Jul 2019 09:32:22 GMT
+Secret message is:
+"Docker is easy"
+Sat, 06 Jul 2019 09:32:28 GMT
+Sat, 06 Jul 2019 09:32:31 GMT
+Sat, 06 Jul 2019 09:32:34 GMT
+Sat, 06 Jul 2019 09:32:37 GMT
+Secret message is:
+"Docker is easy"
+Sat, 06 Jul 2019 09:32:43 GMT
+Sat, 06 Jul 2019 09:32:46 GMT
+
+
+
+

@@ -1,0 +1,32 @@
+Clone frontend example to docker image build dir
+-------------------------------------------------
+peekoo@acies:~/DevOps-with-Docker/part1/1.12/frontend$ git clone https://github.com/docker-hy/frontend-example-docker.git
+peekoo@acies:~/DevOps-with-Docker/part1/1.12/frontend$ cd frontend-example-docker/
+peekoo@acies:~/DevOps-with-Docker/part1/1.12/frontend/frontend-example-docker$ rm -rf .git
+
+Building frontend
+------------------
+peekoo@acies:~/DevOps-with-Docker/part1/1.12/frontend$ docker build -t frontend-1.12 .
+
+Intermediate test
+------------------
+peekoo@acies:~/DevOps-with-Docker/part1/1.12/frontend$ docker run -d --name frontend-1.12 -p 5000:5000 frontend-1.12
+986caf0fe109e821aabeba11a02da868a76bf5c4ecc393f944b0da6a11f0f36d
+
+Frontend sends ping to http://192.168.1.50:5000/ping according to dev tools network tab
+
+Building backend
+-----------------
+peekoo@acies:~/DevOps-with-Docker/part1/1.12/backend$ docker build -t backend-1.12 .
+
+Running backend
+----------------
+peekoo@acies:~/DevOps-with-Docker/part1/1.12/backend$ touch logs.txt
+peekoo@acies:~/DevOps-with-Docker/part1/1.12/backend$ docker run -d --name backend-1.12 -p 8000:8000 -v ${PWD}/logs.txt  backend-1.12
+d133cdf68030387854a0271d54c92b2c15ab9053d92fe42653a0ed9d09ae073a
+
+Combined test
+-------------
+Opened frontend in browser tried it out. Accoring to dev tools backend responded with pong and
+got green on test button. See img 1.12 working.png
+

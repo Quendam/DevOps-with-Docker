@@ -1,0 +1,41 @@
+Mailhog
+-----------
+(https://hub.docker.com/r/mailhog/mailhog)
+
+peekoo@acies:~$ docker run --name my-mail-server -p 8025:8025 -p 1025:1025 --detach mailhog/mailhog
+
+Httpd
+------
+(https://hub.docker.com/_/httpd)
+
+docker run -dit --name my-apache -p 80:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
+
+MariaDB
+-------
+(https://hub.docker.com/_/mariadb)
+
+docker run --name some-mariadb -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mariadb:latest
+
+All running
+-----------
+peekoo@acies:~$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                            NAMES
+fb1a1c452019        mailhog/mailhog     "MailHog"                18 seconds ago      Up 17 seconds       0.0.0.0:1025->1025/tcp, 0.0.0.0:8025->8025/tcp   my-mail-server
+47d0a24ecfdd        mariadb:latest      "docker-entrypoint.s…"   4 minutes ago       Up 4 minutes        3306/tcp                                         my-mariadb
+ccb2187e0573        httpd:2.4           "httpd-foreground"       10 minutes ago      Up 10 minutes       0.0.0.0:81->80/tcp                               my-apache
+
+Shutdown 2 
+-----------
+peekoo@acies:~$ docker stop my-mariadb
+my-mariadb
+peekoo@acies:~$ docker stop my-apache
+my-apache
+
+Only 1 running
+---------------
+peekoo@acies:~$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS              PORTS                                            NAMES
+fb1a1c452019        mailhog/mailhog     "MailHog"           About a minute ago   Up About a minute   0.0.0.0:1025->1025/tcp, 0.0.0.0:8025->8025/tcp   my-mail-server
+
+
+

@@ -1,0 +1,21 @@
+# Steps to publish to heroku
+
+peekoo@acies:~/DevOps-with-Docker/part1$ docker pull devopsdockeruh/heroku-example
+
+peekoo@acies:~/DevOps-with-Docker/part1$ docker images
+
+peekoo@acies:~/DevOps-with-Docker/part1$ docker tag registry.heroku.com/exercise-1-16/web 5221e4b03bc7
+
+peekoo@acies:~/DevOps-with-Docker/part1$ docker tag devopsdockeruh/heroku-example:latest registry.heroku.com/exercise-1-16/web
+
+peekoo@acies:~/DevOps-with-Docker/part1$ heroku login
+
+peekoo@acies:~/DevOps-with-Docker/part1$ heroku container:login
+
+peekoo@acies:~/DevOps-with-Docker/part1$ heroku container:release web --app exercise-1-16
+Releasing images web to exercise-1-16... done
+
+heroku url: https://exercise-1-16.herokuapp.com/
+
+
+

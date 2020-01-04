@@ -1,0 +1,31 @@
+Build docker clock
+------------------
+
+peekoo@acies:~/DevOps-with-Docker/part1/1.6$ docker build -t="docker-clock" .
+Sending build context to Docker daemon  2.048kB
+Step 1/2 : FROM devopsdockeruh/overwrite_cmd_exercise
+ ---> 0f7f459b76c9
+Step 2/2 : CMD ["-c"]
+ ---> Running in 83ca64cce3c2
+Removing intermediate container 83ca64cce3c2
+ ---> 880e9ff358fc
+Successfully built 880e9ff358fc
+
+Running docker clock
+--------------------
+peekoo@acies:~/DevOps-with-Docker/part1/1.6$ docker run docker-clock
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+

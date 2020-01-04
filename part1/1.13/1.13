@@ -1,0 +1,13 @@
+# Build
+peekoo@acies:~/DevOps-with-Docker/part1/1.13$ docker build -t "java-1.13" .
+....
+ ---> 729582fddb12
+Successfully built 729582fddb12
+Successfully tagged java-1.13:latest
+
+# Run
+peekoo@acies:~/DevOps-with-Docker/part1/1.13$ docker run -d --name java-1.13 -p 8080:8080 java-1.13
+8803eafbaf25ad02b6481de5b2b7d8ccd2e9e4cca41c53335e0b2f8b7d89a36b
+
+# Testing
+Opened in browser and poked the only button. Got message "Success". See image 1.13.png

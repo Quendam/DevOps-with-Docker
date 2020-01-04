@@ -1,0 +1,22 @@
+# Build container
+peekoo@acies:~/DevOps-with-Docker/part1/1.14$ docker build -t rails-1.14 .
+....
+Step 16/16 : CMD rails s
+ ---> Running in 04c563852c2b
+Removing intermediate container 04c563852c2b
+ ---> 2fb86e7d761e
+Successfully built 2fb86e7d761e
+Successfully tagged rails-1.14:latest
+
+# Running
+peekoo@acies:~/DevOps-with-Docker/part1/1.14$ docker run -d -p 3000:3000 rails-1.14
+9a9d727d0da42ef12377dcdf552426d13074b5f53856b2ea94d0eeb66cb7073d
+
+# Testing
+Opened http://192.168.1.50:3000 in browser and "New press" app opened. Tested button pressing and it seems to work. 
+See imgs 1.14-1,png and 1.14-2.png 
+
+P.S. This exercise was very difficult for me as I have very little experience with ruby and/or rails. There could be more tips on how to install it and if ruby image is suggested then ruby app should be compatible with existing image versions. Spent big part of my day trying to downgrade 2.6.5 to 2.6.0 before actually abandoning the suggested image and going for manual install of 2.6.0 from "source" via rvm. 
+P.P.S. Also tried the rbenv way of installing it. That was complicated and confusing and didn't work with the ruby image. Mayby would have workd with debian image but didn't try it
+
+

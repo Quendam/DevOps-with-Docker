@@ -1,0 +1,36 @@
+# Prep
+Made copy of app previously made app for another course. Created github repo from it and made some modifications to make it run in one task instead of 2 
+
+# Testing
+peekoo@acies:~/DevOps-with-Docker/part1/1.15$ docker build -t testing .
+....
+ ---> 501d82e95528
+Step 8/8 : CMD npm run both
+ ---> Running in db7045fdd901
+Removing intermediate container db7045fdd901
+ ---> 08e4cf634553
+Successfully built 08e4cf634553
+Successfully tagged testing:latest
+
+peekoo@acies:~/DevOps-with-Docker/part1/1.15$ docker run -d --name testing -p 3000:3000 -p 3001:3001 testing
+a07298f41e21fe3e9bf780711414947f2673f37d8a6d09cb0597a4b4ed1efc22
+
+Created testing container and tested it locally. It works and person records are accessable.
+
+# Publishing to docker hub
+
+Building
+peekoo@acies:~/DevOps-with-Docker/part1/1.15$ docker build -t quendam/glowing-spork .
+
+Testing locally
+peekoo@acies:~/DevOps-with-Docker/part1/1.15$ docker run -d --name glowing-spork -p 3000:3000 -p 3001:3001 quendam/glowing-spork
+
+Publishing
+
+peekoo@acies:~/DevOps-with-Docker/part1/1.15$ docker login
+peekoo@acies:~/DevOps-with-Docker/part1/1.15$ docker push quendam/glowing-spork
+
+Container repo url:
+https://hub.docker.com/r/quendam/glowing-spork
+
+

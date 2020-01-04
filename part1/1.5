@@ -1,0 +1,61 @@
+Run container
+--------------
+o@acies:~$ docker run -dit --name my-ubuntu ubuntu:latest
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+5b7339215d1d: Pull complete
+14ca88e9f672: Pull complete
+a31c3b1caad4: Pull complete
+b054a26005b7: Pull complete
+Digest: sha256:9b1702dcfe32c873a770a32cfd306dd7fc1c4fd134adfb783db68defc8894b3c
+Status: Downloaded newer image for ubuntu:latest
+29aeb1022791a4afd48898d04dc57fc98935f940bfd3a82f3c488d814f52c7cd
+
+Status: Downloaded newer image for ubuntu:latest
+
+Install curl
+------------
+peekoo@acies:~$ docker exec -it my-ubuntu bash
+
+root@29aeb1022791:/# apt-get update
+root@29aeb1022791:/# apt-get install curl
+
+Testing curl (Inside container) 
+------------------------------
+
+t@29aeb1022791:/# sh -c 'echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website;'
+Input website:
+helsinki.fi
+Searching..
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="http://www.helsinki.fi/">here</a>.</p>
+</body></html>
+
+Running curl from outside
+--------------------------
+
+peekoo@acies:~$ docker exec -it my-ubuntu sh -c 'echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website;'
+Input website:
+helsinki.fi
+Searching..
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="http://www.helsinki.fi/">here</a>.</p>
+</body></html>
+
+
+Resolving problems
+------------------
+Not sure what problem is meant in the excercise description. Only thing I had problems in this task was getting curl instll to "stick" to the container.
+
+Needed to run container detatched first and then exec in it to install curl. After that things just worked. Mayby I did something wrong in this?
+
+
+

@@ -1,0 +1,23 @@
+# Description
+As a php develper, I have to opt for LAMP server as container. Not really sure if this is what was supposed to do.
+
+Since all the things I develop are run either at backend by php or on frontend (by browser js) I'll do the  LAMP server.
+
+At work our server are mostly debian based and we use Mariadb as database so those will go in.
+
+# Build
+peekoo@acies:~/DevOps-with-Docker/part1/1.17$ docker build -t quendam/my-dev-env .
+
+# Run 
+peekoo@acies:~/DevOps-with-Docker/part1/1.17$ docker run -d --name localdev -p 80:80 -p 443:443 -p 22:22 -v $(pwd)/html/:/var/www/html/ -v $(pwd)/logs/:/var/log/apache2 my-dev-env
+
+default credentials for ssh and mysql are :
+dev / Qwerty12345
+
+# Testing
+Changed local dir ownership to my user and added info.php to html. See info-php.png
+
+Logged in to phpmyadmin at /phpmyadmin with default creds added "My development database" to see that rights are set correctly. See phpmyadmin.png
+
+# Publish
+docker push quendam/my-dev-env

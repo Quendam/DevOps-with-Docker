@@ -1,0 +1,9 @@
+[Sat Jan 04 14:49:52.645767 2020] [mpm_prefork:notice] [pid 33] AH00163: Apache/2.4.38 (Debian) OpenSSL/1.1.1d configured -- resuming normal operations
+[Sat Jan 04 14:49:52.645847 2020] [core:notice] [pid 33] AH00094: Command line: '/usr/sbin/apache2'
+[Sat Jan 04 15:03:20.837460 2020] [mpm_prefork:notice] [pid 33] AH00163: Apache/2.4.38 (Debian) OpenSSL/1.1.1d configured -- resuming normal operations
+[Sat Jan 04 15:03:20.837529 2020] [core:notice] [pid 33] AH00094: Command line: '/usr/sbin/apache2'
+[Sat Jan 04 15:10:37.764123 2020] [core:warn] [pid 33] AH00098: pid file /var/run/apache2/apache2.pid overwritten -- Unclean shutdown of previous Apache run?
+[Sat Jan 04 15:10:37.767402 2020] [mpm_prefork:notice] [pid 33] AH00163: Apache/2.4.38 (Debian) OpenSSL/1.1.1d configured -- resuming normal operations
+[Sat Jan 04 15:10:37.767432 2020] [core:notice] [pid 33] AH00094: Command line: '/usr/sbin/apache2'
+[Sat Jan 04 15:24:11.561296 2020] [mpm_prefork:notice] [pid 33] AH00163: Apache/2.4.38 (Debian) OpenSSL/1.1.1d configured -- resuming normal operations
+[Sat Jan 04 15:24:11.561370 2020] [core:notice] [pid 33] AH00094: Command line: '/usr/sbin/apache2'

@@ -1,0 +1,15 @@
+Building the backend container
+---------------------
+peekoo@acies:~/DevOps-with-Docker/part1/1.11$ docker build -t backend-example .
+
+Running the backend
+-------------------
+peekoo@acies:~/DevOps-with-Docker/part1/1.11$ docker run -d --name backend -p 8000:8000 -v ${PWD}/logs.txt:/app/logs.txt backend-example
+67c2980fbe706b0a37b51a9fa5a0578918c4e69406ddae43c5e02b70bb1d93dd
+
+
+Testing
+--------
+Opened http://192.168.1.50:8000 from my dev machine and was greated with text 'Port configured correctly, generated message in logs.txt'
+
+Also row per request was written to logs.txt file.

@@ -1,0 +1,65 @@
+Building app
+------------
+
+# Clone app from git 
+peekoo@acies:~/codes$ git clone https://github.com/docker-hy/frontend-example-docker.git
+Cloning into 'frontend-example-docker'...
+peekoo@acies:~/codes$ cd frontend-example-docker/
+
+# Install packages
+peekoo@acies:~/codes/frontend-example-docker$ npm i
+
+# Test it
+peekoo@acies:~/codes/frontend-example-docker$ npm serve
+
+# Build app
+peekoo@acies:~/codes/frontend-example-docker$ npm run build
+
+> frontend-example-docker@1.0.0 build /home/peekoo/codes/frontend-example-docker
+> webpack --mode production
+
+Building the container
+----------------------
+
+# Copy over dist files
+peekoo@acies:~/DevOps-with-Docker/part1/1.10$ cp -r /home/peekoo/codes/frontend-example-docker/dist/ ./dist
+
+# Building
+peekoo@acies:~/DevOps-with-Docker/part1/1.10$ docker build -t frontend-sample .
+Sending build context to Docker daemon  2.742MB
+Step 1/6 : FROM node:latest
+ ---> 0601b4151f1d
+Step 2/6 : WORKDIR /app
+ ---> Using cache
+ ---> 5b8c5b8729ce
+Step 3/6 : COPY dist ./dist
+ ---> 7c7a52bc6cba
+Step 4/6 : EXPOSE 5000/tcp
+ ---> Running in 3b5769911068
+Removing intermediate container 3b5769911068
+ ---> 82dbacb79b52
+Step 5/6 : RUN npm install -g serve
+ ---> Running in e5c74f3927f6
+/usr/local/bin/serve -> /usr/local/lib/node_modules/serve/bin/serve.js
++ serve@11.0.2
+added 78 packages from 39 contributors in 3.577s
+Removing intermediate container e5c74f3927f6
+ ---> d1101b77bb24
+Step 6/6 : CMD serve -s -l 5000 dist
+ ---> Running in c2edc93ca8bd
+Removing intermediate container c2edc93ca8bd
+ ---> 8586cdc07bf1
+Successfully built 8586cdc07bf1
+Successfully tagged frontend-sample:latest
+
+Running 
+------------
+
+peekoo@acies:~$ docker run --name frontend-sample -d -p 5000:5000 frontend-sample
+9b1bb01237a7e6eea8170becd13d3424364cc2cabee79a87e1ed8b66dee2602d
+
+From website:
+
+Part 1
+Exercise 1.10: Congratulations! You configured your ports correctly! 
+ 

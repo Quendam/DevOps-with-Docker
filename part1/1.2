@@ -1,0 +1,68 @@
+Current containers
+------------------
+
+peekoo@acies:~$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                     PORTS                                            NAMES
+fb1a1c452019        mailhog/mailhog     "MailHog"                5 minutes ago       Up 5 minutes               0.0.0.0:1025->1025/tcp, 0.0.0.0:8025->8025/tcp   my-mail-server
+47d0a24ecfdd        mariadb:latest      "docker-entrypoint.s…"   10 minutes ago      Exited (0) 4 minutes ago                                                    my-mariadb
+ccb2187e0573        httpd:2.4           "httpd-foreground"       16 minutes ago      Exited (0) 4 minutes ago                                                    my-apache
+
+Removing all containers and images
+----------------------------------
+peekoo@acies:~$ docker system prune -a
+WARNING! This will remove:
+        - all stopped containers
+        - all networks not used by at least one container
+        - all images without at least one container associated to them
+        - all build cache
+Are you sure you want to continue? [y/N] y
+Deleted Containers:
+fb1a1c4520193e53cf84dc31eb38008acd57cd4393304106920269d03b7d222b
+47d0a24ecfdd3f7838bc46c51a5ff0bd5bacda9bca5b419d566f41d938ebcb75
+ccb2187e05738c0000ec41416201b6ab2964aa46d958c087ee38f354b867428c
+
+Deleted Images:
+untagged: mailhog/mailhog:latest
+untagged: mailhog/mailhog@sha256:98c7e2e6621c897ad86f31610d756d76b8ee622c354c28a76f4ed49fb6ed996f
+deleted: sha256:e00a21e210f9bb560913efa409ded5f7ed12601fda0adefdb9a73211f724b7e5
+deleted: sha256:73c5cd926e63bcf9f5c35bcab9da983af506f00336b90dfa7e399729e8426ef0
+deleted: sha256:7641e28d3020a848563876dd97915427d3d90c1a648e4b6dae99c14e87764abb
+deleted: sha256:3fe0a4b63c0335c8f603a4e6ef347c4672506c63226ad4607c0a480f84bd97c6
+deleted: sha256:a120b7c9a693292190f50bc37e5847c7da5428e1852995e303bb1c718ed567d6
+untagged: httpd:2.4
+untagged: httpd@sha256:a129c3a747fe9e406bf91d4d1fb2d4ed7b51d7a1f523fcf372c18c3c35981d12
+deleted: sha256:e77c77f17b4665aabfe691258f6ef05a1288dba9ac8ca328b590840fdc66b91c
+deleted: sha256:9e2f21cca354555c0d4e2906d8523622b468d9979db84a44c829ff56e8027e66
+deleted: sha256:a647936d90f060a858cc7c824297df3d8af6717150ee26266568d5401f036d1d
+deleted: sha256:58e57d2f6f4705b325d194bc409a508740f0a679d3716214459821359952717d
+deleted: sha256:da2fabc4ba467b1b78d448424e0459dde30e809757a9e64b8a386f1192b052ad
+deleted: sha256:cf5b3c6798f77b1f78bf4e297b27cfa5b6caa982f04caeb5de7d13c255fd7a1e
+untagged: mariadb:latest
+untagged: mariadb@sha256:33e9f35b1b1a2ed4254dbcc887cbf1f4b3d8a988d8d716372fa559c5f3aeafc8
+deleted: sha256:3a2ef06682acfd0b8155e2df602b91c265f1e45d6d47ff17b146608a3d756b90
+deleted: sha256:666196ec56cda844161680a593f2ed8f4411079c1d4aacee2fa35b9568137891
+deleted: sha256:a93872b79ebfdd1b3aad711451f7298384a120537f2a3bcb03fcaf4c22487d30
+deleted: sha256:68af6089e8b828e0eaf607e58e5422fab3bd32f4d64640f057301706f6aaa787
+deleted: sha256:b22412484e0f7af60c07c46752f6d8bc7d1d2062d7d4969548f4b59a94930619
+deleted: sha256:b39057870844deb5c6fc6b5bfeebe58db806b51afb7462e84b6c475dc02cd823
+deleted: sha256:6a85451ea4173e2b3da4c04459abaf608628259d5ca59f23c0edfefa3318e3de
+deleted: sha256:27e07539d7221c100df7f585f6930c15dd7eea7aeee6722641f141238fa1df02
+deleted: sha256:fff8555a552c190a7027787697441a315e16b88af66d4e068b9548d0bc95520b
+deleted: sha256:ec36d99025aa7a3968a1c874b4b5d7ea4071194609d050d2ec5b30ba3070b1da
+deleted: sha256:4b597a49aea7ffac4ef80146eb0eb7f2c61bd93eb61129d65dfa407fa3d61635
+deleted: sha256:7c1abf1dbbfd02a48330a7317ab45a6091d53e2e9cc062f0f3dbd2b7539947a6
+deleted: sha256:5a614dda4a54650168ee2cd30ce2e39576dad5c9a0d1907c02445687b4ea5090
+deleted: sha256:bd042113a73a5c9c6680990740446b7324afb39e243ade3d33bdaa9ffaf8d294
+deleted: sha256:ba9de9d8475e7f5e40086358a1353b3cc080994fc6d31e4272dd3acb69b0151e
+
+Total reclaimed space: 515.2MB
+
+No images / Containers
+---------------------
+peekoo@acies:~$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+peekoo@acies:~$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+
+
