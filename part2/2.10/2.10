@@ -1,0 +1,9 @@
+# Changes and testing
+Only major change needed seemd to be API_URL=http://192.168.1.50/api environment variable for frontend. 
+This is because backend is now proxied by nginx to backend container.
+
+Backend had already info on where frontend container is found at.
+
+Attached testing png 2.10 for browser view of thesting
+
+

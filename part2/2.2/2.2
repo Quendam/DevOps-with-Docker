@@ -1,0 +1,15 @@
+# Testing
+peekoo@acies:~/DevOps-with-Docker/part2/2.2$ docker-compose up
+Creating network "22_default" with the default driver
+Pulling up (devopsdockeruh/ports_exercise:)...
+latest: Pulling from devopsdockeruh/ports_exercisei
+cd784148e348: Pull complete                                                                                             9ddca35fefbf: Pull complete                                                                                             7fc670963d22: Pull complete                                                                                             893040f9bc16: Pull complete                                                                                             b0ae6401e570: Pull complete                                                                                             Digest: sha256:2ff93dd0c744aee7a8f00bc9558d09fd6279493da0d01769fe600f78fb4593f2
+Status: Downloaded newer image for devopsdockeruh/ports_exercise:latest
+Creating 22_up_1 ... done                                                                                               Attaching to 22_up_1
+up_1  |
+up_1  | > ports_exercise@1.0.0 start /usr/app
+up_1  | > node index.js
+up_1  |
+up_1  | Listening on port 80, this means inside of the container. Use -p to map the port to a port of your local machine.
+
+Assigned 8080 to this container and opened it from my desktop machine. Got message "Ports configured correctly", see attached 2.2.png

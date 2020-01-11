@@ -1,0 +1,11 @@
+# testing
+peekoo@acies:~/DevOps-with-Docker/part2/2.1$ touch logs.txt
+peekoo@acies:~/DevOps-with-Docker/part2/2.1$ docker-compose up
+Removing 21_up_1
+Recreating da7bf46cfa3c_21_up_1 ... done                                                                                Attaching to 21_up_1
+up_1  | (node:1) ExperimentalWarning: The fs.promises API is experimental
+up_1  | Wrote to file /usr/app/logs.txt
+up_1  | Wrote to file /usr/app/logs.txt
+up_1  | Wrote to file /usr/app/logs.txt
+
+Seems logs.txt contains lines written once per second and phrase: "Volume bind mount is easy"

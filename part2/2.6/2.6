@@ -1,0 +1,69 @@
+# Testing
+peekoo@acies:~/DevOps-with-Docker/part2/2.6$ docker-compose up -d
+Creating network "26_default" with the default driver
+Building backend
+Step 1/8 : FROM node:latest
+ ---> 7354979df4ec
+Step 2/8 : WORKDIR /app
+ ---> Using cache
+ ---> 89ba6d38db3d
+Step 3/8 : RUN apt-get install -y git
+ ---> Using cache
+ ---> 3e58080badc5
+Step 4/8 : RUN git clone https://github.com/docker-hy/backend-example-docker.git .
+ ---> Using cache
+ ---> 3a0f0634415a
+Step 5/8 : RUN npm i
+ ---> Using cache
+ ---> 6348ccf6af77
+Step 6/8 : EXPOSE 8000
+ ---> Using cache
+ ---> 54b226fcd21c
+Step 7/8 : ENV FRONT_URL=http://192.168.1.50:5000
+ ---> Using cache
+ ---> 3fe00f1d1afc
+Step 8/8 : CMD npm start
+ ---> Using cache
+ ---> 34e25b577453
+
+Successfully built 34e25b577453
+Successfully tagged 26_backend:latest
+WARNING: Image for service backend was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Building frontend
+Step 1/7 : FROM node:latest
+ ---> 7354979df4ec
+Step 2/7 : WORKDIR /app
+ ---> Using cache
+ ---> 89ba6d38db3d
+Step 3/7 : RUN apt-get install -y git
+ ---> Using cache
+ ---> 3e58080badc5
+Step 4/7 : RUN git clone https://github.com/docker-hy/frontend-example-docker .
+ ---> Using cache
+ ---> 24c48f73919a
+Step 5/7 : RUN npm install
+ ---> Using cache
+ ---> 9dae264979b6
+Step 6/7 : EXPOSE 5000/tcp
+ ---> Using cache
+ ---> 55f1a6050faa
+Step 7/7 : CMD API_URL=http://192.168.1.50:8000 npm start
+ ---> Using cache
+ ---> edd6008a6f54
+
+Successfully built edd6008a6f54
+Successfully tagged 26_frontend:latest
+WARNING: Image for service frontend was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Pulling postgres (postgres:latest)...
+latest: Pulling from library/postgres
+...
+Status: Downloaded newer image for postgres:latest
+
+Creating frontend-2.5  ... done
+Creating 26_postgres_1 ... done
+Creating backend-2.5   ... done
+Creating redis-2.5     ... done 
+
+Opened http://192.168.1.50:5000 and added some messages. They seemd to persist through page refreshes so I think they are saved in the database.
+
+2.6.png shows my view as usual.

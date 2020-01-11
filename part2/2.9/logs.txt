@@ -1,0 +1,5 @@
+1/11/2020, 12:06:42 PM: test 1
+1/11/2020, 12:06:46 PM: test 2
+1/11/2020, 12:08:01 PM: message after first down up cycle
+1/11/2020, 12:09:39 PM: This message should be gone
+1/11/2020, 12:14:06 PM: First message after rm database

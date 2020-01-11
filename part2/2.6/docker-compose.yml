@@ -1,0 +1,32 @@
+version: '3.5'
+
+services:
+  backend: 
+    build: ./backend/
+    ports: 
+     - 8000:8000 
+    container_name: backend-2.6
+    volumes: 
+     - ./logs.txt:/app/logs.txt
+    environment:
+     - FRONT_URL=http://192.168.1.50:5000
+     - REDIS=redis
+     - REDIS_PORT=6379
+     - DB_USERNAME=devops
+     - DB_PASSWORD=testing
+     - DB_HOST=postgres
+  frontend: 
+    build: ./frontend/
+    ports: 
+     - 5000:5000
+    container_name: frontend-2.6
+  redis: 
+    image: redis:latest
+    ports:
+     - 6379:6379
+    container_name: redis-2.6
+  postgres:
+    image: postgres:latest
+    environment:
+     - POSTGRES_PASSWORD=testing
+     - POSTGRES_USER=devops

@@ -22,7 +22,7 @@ peekoo@acies:~/DevOps-with-Docker/part1/1.12/backend$ docker build -t backend-1.
 Running backend
 ----------------
 peekoo@acies:~/DevOps-with-Docker/part1/1.12/backend$ touch logs.txt
-peekoo@acies:~/DevOps-with-Docker/part1/1.12/backend$ docker run -d --name backend-1.12 -p 8000:8000 -v ${PWD}/logs.txt  backend-1.12
+peekoo@acies:~/DevOps-with-Docker/part1/1.12/backend$ docker run -d --name backend-1.12 -p 8000:8000 -v ${PWD}/app/logs.txt  backend-1.12
 d133cdf68030387854a0271d54c92b2c15ab9053d92fe42653a0ed9d09ae073a
 
 Combined test

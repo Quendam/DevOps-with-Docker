@@ -1,0 +1,19 @@
+# Running
+peekoo@acies:~/DevOps-with-Docker/part2/2.4$ peekoo@acies:~/DevOps-with-Docker/part2/2.4$ docker-compose up -d --scale compute=5
+
+Decided to go with 5 nodes, just to see what happens :)
+
+# Testing
+
+ieekoo@acies:~/DevOps-with-Docker/part2/2.4$ peekoo@acies:~/DevOps-with-Docker/part2/2.4$ docker-compose up -d --scale compute=5
+Starting 24_compute_1 ...
+Starting 24_compute_1 ... done
+load-balancer is up-to-date
+Creating 24_compute_2 ... done
+Creating 24_compute_3 ... done
+Creating 24_compute_4 ... done
+Creating 24_compute_5 ... done   
+
+Opened http://192.168.1.50:3000 in browser. Small delay later requests were answered by compute nodes and got back "Congratulations!".
+
+Again attached image of this (2.4.png)

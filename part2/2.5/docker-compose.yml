@@ -1,0 +1,25 @@
+version: '3.5'
+
+services:
+  backend: 
+    build: ./backend/
+    ports: 
+     - 8000:8000 
+    container_name: backend-2.5
+    volumes: 
+     - ./logs.txt:/app/logs.txt
+    environment:
+     - FRONT_URL=http://192.168.1.50:5000
+     - REDIS=redis
+     - REDIS_PORT=6379
+  frontend: 
+    build: ./frontend/
+    ports: 
+     - 5000:5000
+    container_name: frontend-2.5
+  redis: 
+    image: redis
+    ports:
+     - 6379:6379
+    container_name: redis-2.5
+

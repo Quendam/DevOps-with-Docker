@@ -1,0 +1,107 @@
+# Testing
+peekoo@acies:~/DevOps-with-Docker/part2/2.3$ touch logs.txt
+peekoo@acies:~/DevOps-with-Docker/part2/2.3$ peekoo@acies:~/DevOps-with-Docker/part2/2.3$ docker-compose up -d
+Creating network "23_default" with the default driver
+Building backend
+Step 1/8 : FROM node:latest
+latest: Pulling from library/node
+...
+status: Downloaded newer image for node:latest
+ ---> 7354979df4ec
+Step 2/8 : WORKDIR /app
+ ---> Running in bf1a9b5f53b6
+Removing intermediate container bf1a9b5f53b6
+ ---> 4cf83ff7e25f
+Step 3/8 : RUN apt-get install -y git
+ ---> Running in 1391bfe13a91
+Reading package lists...
+Building dependency tree...
+Reading state information...
+git is already the newest version (1:2.11.0-3+deb9u5).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Removing intermediate container 1391bfe13a91
+ ---> 2369476cf88d
+Step 4/8 : RUN git clone https://github.com/docker-hy/backend-example-docker.git .
+ ---> Running in 8910e6725f2d
+Cloning into '.'...
+Removing intermediate container 8910e6725f2d
+ ---> b8fa37961ee6
+Step 5/8 : RUN npm i
+ ---> Running in 2c05714cd101
+
+> nodemon@1.18.9 postinstall /app/node_modules/nodemon
+> node bin/postinstall || exit 0
+
+Love nodemon? You can now support the project via the open collective:
+ > https://opencollective.com/nodemon/donate
+
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.4 (node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.4: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+
+added 606 packages from 458 contributors and audited 5317 packages in 12.034s
+found 273 vulnerabilities (1 moderate, 272 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+Removing intermediate container 2c05714cd101
+ ---> 3dded25a53f1
+Step 6/8 : EXPOSE 8000
+ ---> Running in e64440605ae3
+Removing intermediate container e64440605ae3
+ ---> 05f38fe7802e
+Step 7/8 : ENV FRONT_URL=http://192.168.1.50:5000
+ ---> Running in 3eb819c70ea8
+Removing intermediate container 3eb819c70ea8
+ ---> 4e07d74f0ad4
+Step 8/8 : CMD npm start
+ ---> Running in 0fa9763c90bf
+Removing intermediate container 0fa9763c90bf
+ ---> 11549e3efa36
+
+Successfully built 11549e3efa36
+Successfully tagged 23_backend:latest
+WARNING: Image for service backend was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Building frontend
+Step 1/6 : FROM node:latest
+ ---> 7354979df4ec
+Step 2/6 : WORKDIR /app
+ ---> Using cache
+ ---> 4cf83ff7e25f
+Step 3/6 : COPY frontend-example-docker ./
+ ---> 50726ba524ae
+Step 4/6 : RUN npm install
+ ---> Running in 7c94fc339b83
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.7 (node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.7: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+
+added 1029 packages from 415 contributors and audited 11636 packages in 20.77s
+found 313 vulnerabilities (6 moderate, 307 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+Removing intermediate container 7c94fc339b83
+ ---> 70ab3a71b2ed
+Step 5/6 : EXPOSE 5000/tcp
+ ---> Running in a5c507f73080
+Removing intermediate container a5c507f73080
+ ---> 75085fed048d
+Step 6/6 : CMD API_URL=http://192.168.1.50:8000/ npm start
+ ---> Running in ea2dcf3571be
+Removing intermediate container ea2dcf3571be
+ ---> 84c2c0f67c67
+
+Successfully built 84c2c0f67c67
+Successfully tagged 23_frontend:latest
+WARNING: Image for service frontend was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Creating backend-2.3  ... error
+Creating frontend-2.3 ... done
+
+ERROR: for backend-2.3  Cannot start service backend: OCI runtime create failed: container_linux.go:345: starting container process caused "process_linux.go:430: container init caused \"rootfs_linux.go:58: mounting \\\"/home/peekoo/DevOps-with-Docker/part2/2.3/logs.txt\\\" to rootfs \\\"/var/lib/docker/overlay2/2f4492b1afacfde3b23833bc5d91553fe9413d35b3a731b3ea8a1ec7e23b71cf/merged\\\" at \\\"/var/lib/docker/overlay2/2f4492b1afacfde3b23833bc5d91553fe9413d35b3a731b3ea8a1ec7e23b71cf/merged/app/logs.txt\\\" caused \\\"not a directory\\\"\"": unknown: Are you trying to mount a directory onto a file (or vice-versa)? Check if the specified host path exists and is the expected type
+
+ERROR: for backend  Cannot start service backend: OCI runtime create failed: container_linux.go:345: starting container process caused "process_linux.go:430: container init caused \"rootfs_linux.go:58: mounting \\\"/home/peekoo/DevOps-with-Docker/part2/2.3/logs.txt\\\" to rootfs \\\"/var/lib/docker/overlay2/2f4492b1afacfde3b23833bc5d91553fe9413d35b3a731b3ea8a1ec7e23b71cf/merged\\\" at \\\"/var/lib/docker/overlay2/2f4492b1afacfde3b23833bc5d91553fe9413d35b3a731b3ea8a1ec7e23b71cf/merged/app/logs.txt\\\" caused \\\"not a directory\\\"\"": unknown: Are you trying to mount a directory onto a file (or vice-versa)? Check if the specified host path exists and is the expected type
+ERROR: Encountered errors while bringing up the project.
+peekoo@acies:~/DevOps-with-Docker/part2/2.3$ rmdir logs.txt/
+peekoo@acies:~/DevOps-with-Docker/part2/2.3$ touch logs.txt
+peekoo@acies:~/DevOps-with-Docker/part2/2.3$ docker-compose up -d
+frontend-2.3 is up-to-date
+Starting backend-2.3 ... done                                         
+
+After these, opened browser and navigated to http://192.168.1.50:5000 and found familiar webpage there. Poked test button for exercise 1.12 and it said "Working!". 
+
+See 2.3.png 
